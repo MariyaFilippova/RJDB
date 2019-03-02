@@ -1,2 +1,0 @@
-# RJDB
-Russian Job Database
