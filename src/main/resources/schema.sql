@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS vacancies(
   name VARCHAR(100) NOT NULL,
   vacancy VARCHAR(100) NOT NULL,
   status SMALLINT,
-  area VARCHAR(100)
+  area SMALLINT
 );
 
 COMMENT ON TABLE vacancies IS 'Table containing the application vacancies'' data';
@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS resumes(
   name VARCHAR(100) NOT NULL,
   resume VARCHAR(100) NOT NULL,
   status SMALLINT,
-  area VARCHAR(100)
+  area SMALLINT
 );
 
 COMMENT ON TABLE resumes IS 'Table containing the application resumes'' data';
