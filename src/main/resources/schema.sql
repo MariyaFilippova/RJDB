@@ -49,6 +49,8 @@ COMMENT ON SEQUENCE company_id_sequence IS 'Sequence for identifiers of table ''
 
 CREATE TABLE IF NOT EXISTS vacancies(
   id BIGINT PRIMARY KEY,
+  --FOREIGN KEY
+  company_id BIGINT REFERENCES companies(id) ON DELETE CASCADE,
   name VARCHAR(100) NOT NULL,
   vacancy VARCHAR(100) NOT NULL,
   status SMALLINT,
@@ -57,6 +59,7 @@ CREATE TABLE IF NOT EXISTS vacancies(
 
 COMMENT ON TABLE vacancies IS 'Table containing the application vacancies'' data';
 COMMENT ON COLUMN vacancies.id IS 'Vacancy''s identifier';
+COMMENT ON COLUMN vacancies.company_id IS 'ID of the company that left a vacancy';
 COMMENT ON COLUMN vacancies.name IS 'The appellation of the job';
 COMMENT ON COLUMN vacancies.status IS 'Status of vacancy';
 COMMENT ON COLUMN vacancies.vacancy IS 'Detailed information about vacancy';
@@ -69,6 +72,8 @@ COMMENT ON SEQUENCE vacancy_id_sequence IS 'Sequence for identifiers of table ''
 
 CREATE TABLE IF NOT EXISTS resumes(
   id BIGINT PRIMARY KEY,
+  --FOREIGN KEY
+  user_id BIGINT REFERENCES users (id) ON DELETE CASCADE,
   name VARCHAR(100) NOT NULL,
   resume VARCHAR(100) NOT NULL,
   status SMALLINT,
@@ -76,36 +81,15 @@ CREATE TABLE IF NOT EXISTS resumes(
 );
 
 COMMENT ON TABLE resumes IS 'Table containing the application resumes'' data';
-COMMENT ON COLUMN resumes.id IS 'Resume''s identifier';
+COMMENT ON COLUMN resumes.id IS 'Resume"s identifier';
 COMMENT ON COLUMN resumes.name IS 'The appellation of the job';
 COMMENT ON COLUMN resumes.status IS 'Status of resume';
+COMMENT ON COLUMN resumes.user_id IS 'ID of the user that wrote a resume';
 COMMENT ON COLUMN resumes.resume IS 'Detailed information about user';
 COMMENT ON COLUMN resumes.area IS 'Where working place is situated';
 
 CREATE SEQUENCE IF NOT EXISTS resume_id_sequence START WITH 1 MINVALUE 1 INCREMENT BY 1;
 COMMENT ON SEQUENCE resume_id_sequence IS 'Sequence for identifiers of table ''orders''';
-
-
-
-CREATE TABLE IF NOT EXISTS users_resumes (
-  user_id BIGINT  REFERENCES users (id),
-  resume_id BIGINT REFERENCES resumes (id),
-  CONSTRAINT orders_goods_pk PRIMARY KEY (user_id, resume_id)
-);
-
-COMMENT ON TABLE users_resumes IS 'Linkage table between tables ''users'' and ''resumes'' ';
-COMMENT ON COLUMN users_resumes.user_id IS 'User''s identifier';
-COMMENT ON COLUMN users_resumes.resume_id IS 'Resume''s identifier';
-
-CREATE TABLE IF NOT EXISTS companies_vacancies (
-   company_id BIGINT  REFERENCES companies (id),
-   vacancy_id BIGINT REFERENCES vacancies (id),
-   CONSTRAINT companies_vacancies_pk PRIMARY KEY (company_id, vacancy_id)
-  );
-
-COMMENT ON TABLE companies_vacancies IS 'Linkage table between tables ''companies'' and ''vacancies'' ';
-COMMENT ON COLUMN companies_vacancies.company_id IS 'Company''s identifier';
-COMMENT ON COLUMN companies_vacancies.vacancy_id IS 'Vacancy''s identifier';
 
 
 CREATE TABLE IF NOT EXISTS vacancies_resumes (
