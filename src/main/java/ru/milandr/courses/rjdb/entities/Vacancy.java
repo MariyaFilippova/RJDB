@@ -3,7 +3,6 @@ package ru.milandr.courses.rjdb.entities;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import ru.milandr.courses.rjdb.entities.enums.Area;
 import ru.milandr.courses.rjdb.entities.enums.Status;
 
 import javax.persistence.*;
@@ -63,16 +62,15 @@ public class Vacancy {
         this.status = status.getValue();
     }
 
-    @Column(name = "AREA")
-    private short area;
 
-    public Area getArea() {
-        return Area.parse(this.area);
-    }
+    @Column(name = "AREA_ID")
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "AREA_ID",  insertable = false, updatable = false)
+    @Getter
+    @Setter
+    private Area area;
 
-    public void setArea(Area area) {
-        this.area = area.getValue();
-    }
+
 
 
     @ManyToMany(fetch = FetchType.LAZY,

@@ -21,6 +21,16 @@ CREATE SEQUENCE IF NOT EXISTS user_id_sequence START WITH 1 MINVALUE 1 INCREMENT
 COMMENT ON SEQUENCE user_id_sequence IS 'Sequence for identifiers of table ''users''';
 
 
+CREATE TABLE IF NOT EXISTS areas(
+  id BIGINT PRIMARY KEY
+);
+
+COMMENT ON TABLE areas IS 'Table containing the application areas'' data';
+COMMENT ON COLUMN areas.id IS 'Area''s identifier';
+
+
+CREATE SEQUENCE IF NOT EXISTS area_id_sequence START WITH 1 MINVALUE 1 INCREMENT BY 1;
+COMMENT ON SEQUENCE area_id_sequence IS 'Sequence for identifiers of table ''areas''';
 
 CREATE TABLE IF NOT EXISTS companies (
   id BIGINT PRIMARY KEY,
@@ -54,7 +64,8 @@ CREATE TABLE IF NOT EXISTS vacancies(
   name VARCHAR(100) NOT NULL,
   vacancy VARCHAR(100) NOT NULL,
   status SMALLINT,
-  area SMALLINT
+  --FOREIGN KEY
+  area_id BIGINT REFERENCES areas(id)
 );
 
 COMMENT ON TABLE vacancies IS 'Table containing the application vacancies'' data';
@@ -63,11 +74,11 @@ COMMENT ON COLUMN vacancies.company_id IS 'ID of the company that left a vacancy
 COMMENT ON COLUMN vacancies.name IS 'The appellation of the job';
 COMMENT ON COLUMN vacancies.status IS 'Status of vacancy';
 COMMENT ON COLUMN vacancies.vacancy IS 'Detailed information about vacancy';
-COMMENT ON COLUMN vacancies.area IS 'Where working place is situated';
+COMMENT ON COLUMN vacancies.area_id IS 'Where working place is situated';
 
 
 CREATE SEQUENCE IF NOT EXISTS vacancy_id_sequence START WITH 1 MINVALUE 1 INCREMENT BY 1;
-COMMENT ON SEQUENCE vacancy_id_sequence IS 'Sequence for identifiers of table ''orders''';
+COMMENT ON SEQUENCE vacancy_id_sequence IS 'Sequence for identifiers of table ''vacancies''';
 
 
 CREATE TABLE IF NOT EXISTS resumes(
@@ -77,7 +88,8 @@ CREATE TABLE IF NOT EXISTS resumes(
   name VARCHAR(100) NOT NULL,
   resume VARCHAR(100) NOT NULL,
   status SMALLINT,
-  area SMALLINT
+  --FOREIGN KEY
+  area_id BIGINT REFERENCES areas(id)
 );
 
 COMMENT ON TABLE resumes IS 'Table containing the application resumes'' data';
@@ -86,10 +98,10 @@ COMMENT ON COLUMN resumes.name IS 'The appellation of the job';
 COMMENT ON COLUMN resumes.status IS 'Status of resume';
 COMMENT ON COLUMN resumes.user_id IS 'ID of the user that wrote a resume';
 COMMENT ON COLUMN resumes.resume IS 'Detailed information about user';
-COMMENT ON COLUMN resumes.area IS 'Where working place is situated';
+COMMENT ON COLUMN resumes.area_id IS 'Where working place is situated';
 
 CREATE SEQUENCE IF NOT EXISTS resume_id_sequence START WITH 1 MINVALUE 1 INCREMENT BY 1;
-COMMENT ON SEQUENCE resume_id_sequence IS 'Sequence for identifiers of table ''orders''';
+COMMENT ON SEQUENCE resume_id_sequence IS 'Sequence for identifiers of table ''resumes''';
 
 
 CREATE TABLE IF NOT EXISTS vacancies_resumes (
@@ -101,3 +113,11 @@ CREATE TABLE IF NOT EXISTS vacancies_resumes (
 COMMENT ON TABLE vacancies_resumes IS 'Linkage table between tables ''resumes'' and ''vacancies'' ';
 COMMENT ON COLUMN vacancies_resumes.vacancy_id IS 'Vacancy''s identifier';
 COMMENT ON COLUMN vacancies_resumes.resume_id IS 'Resume''s identifier';
+
+CREATE TABLE IF NOT EXISTS areas(
+  id BIGINT PRIMARY KEY
+);
+
+COMMENT ON TABLE areas IS 'Table containing the application areas'' data';
+COMMENT ON COLUMN areas.id IS 'Area''s identifier';
+

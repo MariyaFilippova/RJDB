@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
-@Table(name = "USERS")
+@Table(name = "COMPANIES")
 @ToString
 public class Company {
 
@@ -17,8 +17,8 @@ public class Company {
     @Column(name = "id")
     @Getter
     @Setter
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq_gen")
-    @SequenceGenerator(name = "user_seq_gen", sequenceName = "user_id_sequence", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "company_seq_gen")
+    @SequenceGenerator(name = "company_seq_gen", sequenceName = "company_id_sequence", allocationSize = 1)
     private Long id;
 
     @Column(name = "EMAIL")
