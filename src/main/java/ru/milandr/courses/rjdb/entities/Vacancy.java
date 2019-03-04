@@ -69,7 +69,6 @@ public class Vacancy {
     @Setter
     private Long areaId;
 
-    @Column(name = "AREA_ID")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "AREA_ID",  insertable = false, updatable = false)
     @Getter
