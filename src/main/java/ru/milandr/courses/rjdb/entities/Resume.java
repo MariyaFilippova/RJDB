@@ -64,7 +64,7 @@ public class Resume {
     }
 
     @Column(name = "AREA_ID")
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "AREA_ID",  insertable = false, updatable = false)
     @Getter
     @Setter
