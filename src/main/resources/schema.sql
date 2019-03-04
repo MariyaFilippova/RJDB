@@ -21,6 +21,7 @@ CREATE SEQUENCE IF NOT EXISTS user_id_sequence START WITH 1 MINVALUE 1 INCREMENT
 COMMENT ON SEQUENCE user_id_sequence IS 'Sequence for identifiers of table ''users''';
 
 
+
 CREATE TABLE IF NOT EXISTS areas(
   id BIGINT PRIMARY KEY
 );

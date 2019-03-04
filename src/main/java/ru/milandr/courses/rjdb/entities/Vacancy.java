@@ -39,6 +39,7 @@ public class Vacancy {
     @Setter
     private Company company;
 
+
     @Column(name = "NAME")
     @NotNull
     @Getter
