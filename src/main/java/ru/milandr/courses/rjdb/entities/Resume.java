@@ -64,6 +64,12 @@ public class Resume {
     }
 
     @Column(name = "AREA_ID")
+    @NotNull
+    @Getter
+    @Setter
+    private Long areaId;
+
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "AREA_ID",  insertable = false, updatable = false)
     @Getter

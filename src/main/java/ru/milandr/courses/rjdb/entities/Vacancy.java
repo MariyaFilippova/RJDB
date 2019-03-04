@@ -63,6 +63,11 @@ public class Vacancy {
         this.status = status.getValue();
     }
 
+    @Column(name = "AREA_ID")
+    @NotNull
+    @Getter
+    @Setter
+    private Long areaId;
 
     @Column(name = "AREA_ID")
     @ManyToOne(fetch = FetchType.LAZY)
