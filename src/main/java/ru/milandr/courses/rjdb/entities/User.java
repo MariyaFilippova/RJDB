@@ -14,7 +14,7 @@ import java.util.List;
 public class User {
 
     @Id
-    @Column(name = "id")
+    @Column(name = "ID")
     @Getter
     @Setter
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq_gen")

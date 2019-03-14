@@ -1,4 +1,8 @@
 package ru.milandr.courses.rjdb.services;
 
-public class ResumeService {
+import ru.milandr.courses.rjdb.daos.ResumeDao;
+
+public class ResumeService
+{
+    private ResumeDao resumeDao;
 }

@@ -1,4 +1,8 @@
 package ru.milandr.courses.rjdb.daos;
 
-public interface ResumeDao {
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+import ru.milandr.courses.rjdb.entities.Resume;
+@Repository
+public interface ResumeDao extends CrudRepository<Resume, Long> {
 }
