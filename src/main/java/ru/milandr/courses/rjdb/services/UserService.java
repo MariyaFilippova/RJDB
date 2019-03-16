@@ -16,22 +16,19 @@ import java.util.stream.Collectors;
 @Getter
 @Service
 
-public class UserService
-
-{
+public class UserService {
     private UserDao userDao;
-    public UserService(UserDao userDao)
-    {
+
+    public UserService(UserDao userDao) {
         this.userDao = userDao;
     }
-    public UserDto getUser(long userId)
-{
-    User user = userDao.findOne(userId);
-    return buildUserDtoFromUser(user);
-}
 
-    private UserDto buildUserDtoFromUser(User user)
-    {
+    public UserDto getUser(long userId) {
+        User user = userDao.findOne(userId);
+        return buildUserDtoFromUser(user);
+    }
+
+    private UserDto buildUserDtoFromUser(User user) {
         UserDto userDto = new UserDto();
         userDto.setId(user.getId());
         userDto.setEmail(user.getEmail());
@@ -42,9 +39,10 @@ public class UserService
 
         return userDto;
     }
+
     private List<ResumeDto> buildResumeDtoListFromResumeList(List<Resume> resumes) {
         return resumes.stream()
-                .map(resume -> new ResumeDto(resume.getId(),  resume.getName(), resume.getResume(), resume.getStatus().getValue(),resume.getAreaId(), resume.getUserId()))
+                .map(resume -> new ResumeDto(resume.getId(), resume.getName(), resume.getResume(), resume.getStatus().getValue(), resume.getAreaId(), resume.getUserId()))
                 .collect(Collectors.toList());
     }
 

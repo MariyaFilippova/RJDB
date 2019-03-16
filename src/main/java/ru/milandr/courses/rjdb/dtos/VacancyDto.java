@@ -1,13 +1,17 @@
 package ru.milandr.courses.rjdb.dtos;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Getter;
-import lombok.Setter;
-import ru.milandr.courses.rjdb.entities.Resume;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.*;
+
 import ru.milandr.courses.rjdb.entities.enums.Status;
 
 import java.util.List;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@NoArgsConstructor
+@EqualsAndHashCode
+@ToString
 public class VacancyDto {
     @Getter
     @Setter
@@ -26,7 +30,6 @@ public class VacancyDto {
     private String vacancy;
 
 
-
     private short status;
 
     @Getter
@@ -34,14 +37,12 @@ public class VacancyDto {
     private List<ResumeDto> resumes;
 
 
-
     @Getter
     @Setter
     private long area_id;
 
 
-    public VacancyDto(long id, String name, String vacancy, short status, long area_id, long company_id )
-    {
+    public VacancyDto(long id, String name, String vacancy, short status, long area_id, long company_id) {
         this.id = id;
         this.name = name;
         this.area_id = area_id;
@@ -51,15 +52,13 @@ public class VacancyDto {
     }
 
     @JsonIgnore
-    public Status getStatus()
-    {
+    public Status getStatus() {
         return Status.parse(this.status);
     }
 
     @JsonIgnore
-    public void setStatus(Status orderStatus)
-    {
-        this.status= orderStatus.getValue();
+    public void setStatus(Status orderStatus) {
+        this.status = orderStatus.getValue();
     }
 
 }
