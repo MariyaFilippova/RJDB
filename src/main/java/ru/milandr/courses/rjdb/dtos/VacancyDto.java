@@ -3,7 +3,10 @@ package ru.milandr.courses.rjdb.dtos;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
+import ru.milandr.courses.rjdb.entities.Resume;
 import ru.milandr.courses.rjdb.entities.enums.Status;
+
+import java.util.List;
 
 public class VacancyDto {
     @Getter
@@ -28,17 +31,23 @@ public class VacancyDto {
 
     @Getter
     @Setter
+    private List<ResumeDto> resumes;
+
+
+
+    @Getter
+    @Setter
     private long area_id;
 
 
-    public VacancyDto(long id, String name, String resume, short status, long area_id, long user_id )
+    public VacancyDto(long id, String name, String vacancy, short status, long area_id, long company_id )
     {
         this.id = id;
         this.name = name;
         this.area_id = area_id;
-        this.vacancy = resume;
+        this.vacancy = vacancy;
         this.status = status;
-        this.company_id = user_id;
+        this.company_id = company_id;
     }
 
     @JsonIgnore

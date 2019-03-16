@@ -6,6 +6,7 @@ import lombok.ToString;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
@@ -21,6 +22,12 @@ public class Area {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "area_seq_gen")
     @SequenceGenerator(name = "area_seq_gen", sequenceName = "area_id_sequence", allocationSize = 1)
     private Long id;
+
+    @Column(name = "NAME")
+    @NotNull
+    @Getter
+    @Setter
+    private String name;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "area")
     @Getter

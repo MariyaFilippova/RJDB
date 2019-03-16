@@ -21,13 +21,14 @@ CREATE SEQUENCE IF NOT EXISTS user_id_sequence START WITH 1 MINVALUE 1 INCREMENT
 COMMENT ON SEQUENCE user_id_sequence IS 'Sequence for identifiers of table ''users''';
 
 
-
 CREATE TABLE IF NOT EXISTS areas(
-  id BIGINT PRIMARY KEY
+  id BIGINT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL
 );
 
 COMMENT ON TABLE areas IS 'Table containing the application areas'' data';
 COMMENT ON COLUMN areas.id IS 'Area''s identifier';
+COMMENT ON COLUMN areas.name IS 'Area''s name';
 
 
 CREATE SEQUENCE IF NOT EXISTS area_id_sequence START WITH 1 MINVALUE 1 INCREMENT BY 1;
@@ -114,11 +115,3 @@ CREATE TABLE IF NOT EXISTS vacancies_resumes (
 COMMENT ON TABLE vacancies_resumes IS 'Linkage table between tables ''resumes'' and ''vacancies'' ';
 COMMENT ON COLUMN vacancies_resumes.vacancy_id IS 'Vacancy''s identifier';
 COMMENT ON COLUMN vacancies_resumes.resume_id IS 'Resume''s identifier';
-
-CREATE TABLE IF NOT EXISTS areas(
-  id BIGINT PRIMARY KEY
-);
-
-COMMENT ON TABLE areas IS 'Table containing the application areas'' data';
-COMMENT ON COLUMN areas.id IS 'Area''s identifier';
-

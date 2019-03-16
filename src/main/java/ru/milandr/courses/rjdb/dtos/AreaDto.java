@@ -13,4 +13,13 @@ public class AreaDto {
     @Setter
     private long area_id;
 
+    @Getter
+    @Setter
+    private String name;
+
+    public AreaDto(long area_id, String name) {
+        this.area_id = area_id;
+        this.name = name;
+    }
+
 }

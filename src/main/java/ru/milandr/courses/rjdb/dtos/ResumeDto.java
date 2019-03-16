@@ -4,7 +4,10 @@ package ru.milandr.courses.rjdb.dtos;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
+import ru.milandr.courses.rjdb.entities.Vacancy;
 import ru.milandr.courses.rjdb.entities.enums.Status;
+
+import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @NoArgsConstructor
@@ -36,8 +39,12 @@ public class ResumeDto {
     @Setter
     private long area_id;
 
+    @Getter
+    @Setter
+    private List<VacancyDto> vacancies;
 
-    public ResumeDto(long id, String name, String resume, short status, long area_id, long user_id )
+
+    public ResumeDto(long id, String name, String resume, short status, long area_id, long user_id)
     {
         this.id = id;
         this.name = name;
