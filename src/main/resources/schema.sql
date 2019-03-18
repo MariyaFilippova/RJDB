@@ -94,6 +94,7 @@ CREATE TABLE IF NOT EXISTS resumes(
   area_id BIGINT REFERENCES areas(id)
 );
 
+
 COMMENT ON TABLE resumes IS 'Table containing the application resumes'' data';
 COMMENT ON COLUMN resumes.id IS 'Resume"s identifier';
 COMMENT ON COLUMN resumes.name IS 'The appellation of the job';

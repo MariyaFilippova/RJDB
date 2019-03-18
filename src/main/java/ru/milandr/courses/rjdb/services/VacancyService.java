@@ -30,7 +30,6 @@ public class VacancyService {
 
     private Vacancy buildVacancyFromVacancyDto(VacancyDto vacancyDto) {
         Vacancy vacancy = new Vacancy();
-        vacancy.setId(vacancyDto.getId());
         vacancy.setAreaId(vacancyDto.getArea_id());
         vacancy.setStatus(vacancyDto.getStatus());
         vacancy.setCompanyId(vacancyDto.getCompany_id());

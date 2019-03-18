@@ -39,7 +39,6 @@ public class CompanyService {
 
     private Company buildCompanyFromCompanyDto(CompanyDto companyDto) {
         Company company = new Company();
-        company.setId(companyDto.getId());
         company.setName(companyDto.getName());
         company.setEmail(companyDto.getEmail());
         company.setPhoto(company.getPhoto());

@@ -28,6 +28,21 @@ public class UserService {
         return buildUserDtoFromUser(user);
     }
 
+    public User createUser(UserDto userDto) {
+        User user = buildUserFromUserDto(userDto);
+        userDao.save(user);
+        return user;
+    }
+
+    private User buildUserFromUserDto(UserDto userDto) {
+        User user = new User();
+        user.setEmail(userDto.getEmail());
+        user.setMobile_phone(userDto.getEmail());
+        user.setName(userDto.getName());
+        //user.setPhoto(userDto.getPhoto()); убрали на время тестов
+        return user;
+    }
+
     private UserDto buildUserDtoFromUser(User user) {
         UserDto userDto = new UserDto();
         userDto.setId(user.getId());

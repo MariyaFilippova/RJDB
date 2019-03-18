@@ -66,5 +66,4 @@ public class ResumeDto {
         this.status= orderStatus.getValue();
     }
 
-
 }
