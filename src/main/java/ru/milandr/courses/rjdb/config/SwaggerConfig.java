@@ -22,6 +22,7 @@ import java.util.Collections;
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
+
     private static final String TITLE = "Russian job database REST API";
     private static final String DESCRIPTION = "REST API documentation for Russian job database";
     private static final String VERSION = "0.1";
@@ -31,7 +32,9 @@ public class SwaggerConfig {
     private static final String LICENSE = "License of API";
     //fixme
     private static final String LICENSE_URL = "API license URL";
-    private static final Contact DEVELOPER_CONTACT = new Contact("Vorobyev Daniil", "https://vk.com/danvorobyev", "vorobyev.da@phystech.edu");
+    private static final Contact DEVELOPER_CONTACT = new Contact("Daniil Vorobyev ", "https://vk.com/danvorobyev", "vorobyev.da@phystech.edu");
+
+
     /**
      * Provides possibility to use swagger auto-integration
      * Swagger can now be reached via URL v2/api-docs

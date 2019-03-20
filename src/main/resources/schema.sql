@@ -110,9 +110,11 @@ COMMENT ON SEQUENCE resume_id_sequence IS 'Sequence for identifiers of table ''r
 CREATE TABLE IF NOT EXISTS vacancies_resumes (
    vacancy_id BIGINT  REFERENCES vacancies (id),
    resume_id BIGINT REFERENCES resumes (id),
+   dependency SMALLINT,
    CONSTRAINT vacancies_resumes_pk PRIMARY KEY (vacancy_id, resume_id)
 );
 
 COMMENT ON TABLE vacancies_resumes IS 'Linkage table between tables ''resumes'' and ''vacancies'' ';
 COMMENT ON COLUMN vacancies_resumes.vacancy_id IS 'Vacancy''s identifier';
 COMMENT ON COLUMN vacancies_resumes.resume_id IS 'Resume''s identifier';
+COMMENT ON COLUMN vacancies_resumes.dependency IS 'Response to a resume or job offer';
