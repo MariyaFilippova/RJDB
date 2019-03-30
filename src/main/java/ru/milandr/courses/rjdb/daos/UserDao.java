@@ -6,6 +6,7 @@ import ru.milandr.courses.rjdb.entities.User;
 
 @Repository
 
+
 public interface UserDao extends CrudRepository<User, Long> {
 
 }
