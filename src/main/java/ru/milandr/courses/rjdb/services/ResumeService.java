@@ -2,7 +2,6 @@ package ru.milandr.courses.rjdb.services;
 
 import org.springframework.stereotype.Service;
 import ru.milandr.courses.rjdb.daos.ResumeDao;
-import ru.milandr.courses.rjdb.daos.UserDao;
 import ru.milandr.courses.rjdb.dtos.ResumeDto;
 import ru.milandr.courses.rjdb.entities.Resume;
 
@@ -11,7 +10,6 @@ import ru.milandr.courses.rjdb.entities.Resume;
 @Service
 public class ResumeService {
     private ResumeDao resumeDao;
-    private UserDao userDao;
 
     public ResumeService(ResumeDao resumeDao) {
         this.resumeDao = resumeDao;
@@ -40,14 +38,7 @@ public class ResumeService {
     }
 
     private ResumeDto buildResumeDtoFromResume(Resume resume) {
-        ResumeDto resumeDto = new ResumeDto();
-        resumeDto.setId(resume.getId());
-        resumeDto.setName(resume.getName());
-        resumeDto.setStatus(resume.getStatus());
-        resumeDto.setArea_id(resume.getAreaId());
-        resumeDto.setResume(resume.getResume());
-        resumeDto.setUser_id(resume.getUserId());
-        return resumeDto;
+        return new ResumeDto(resume.getId(), resume.getName(), resume.getResume(), resume.getStatus().getValue(), resume.getAreaId(), resume.getUserId());
     }
 
 

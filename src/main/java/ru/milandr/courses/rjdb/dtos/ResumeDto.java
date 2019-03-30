@@ -4,7 +4,7 @@ package ru.milandr.courses.rjdb.dtos;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
-import ru.milandr.courses.rjdb.entities.Vacancy;
+
 import ru.milandr.courses.rjdb.entities.enums.Status;
 
 import java.util.List;
@@ -32,7 +32,6 @@ public class ResumeDto {
     private String resume;
 
 
-
     private short status;
 
     @Getter
@@ -49,8 +48,8 @@ public class ResumeDto {
         this.id = id;
         this.name = name;
         this.area_id = area_id;
-        this.resume = resume;
         this.status = status;
+        this.resume = resume;
         this.user_id = user_id;
     }
 

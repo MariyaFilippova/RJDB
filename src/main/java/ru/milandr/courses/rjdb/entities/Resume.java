@@ -52,7 +52,9 @@ public class Resume {
     @Setter
     private String resume;
 
+
     @Column(name = "STATUS")
+
     private short status;
 
     public Status getStatus() {

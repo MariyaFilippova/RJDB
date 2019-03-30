@@ -2,7 +2,6 @@ package ru.milandr.courses.rjdb.dtos;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
-import ru.milandr.courses.rjdb.entities.Resume;
 
 import java.util.List;
 

@@ -30,7 +30,6 @@ COMMENT ON TABLE areas IS 'Table containing the application areas'' data';
 COMMENT ON COLUMN areas.id IS 'Area''s identifier';
 COMMENT ON COLUMN areas.name IS 'Area''s name';
 
-
 CREATE SEQUENCE IF NOT EXISTS area_id_sequence START WITH 1 MINVALUE 1 INCREMENT BY 1;
 COMMENT ON SEQUENCE area_id_sequence IS 'Sequence for identifiers of table ''areas''';
 
@@ -45,6 +44,7 @@ CREATE TABLE IF NOT EXISTS companies (
 
 );
 
+
 COMMENT ON TABLE companies IS 'Table containing the application companies'' data';
 COMMENT ON COLUMN companies.id IS 'Company''s identifier';
 COMMENT ON COLUMN companies.name IS 'Company''s name';
@@ -56,7 +56,6 @@ COMMENT ON COLUMN companies.password_salt IS 'A salt to calculate a password has
 
 CREATE SEQUENCE IF NOT EXISTS  company_id_sequence START WITH 1 MINVALUE 1 INCREMENT BY 1;
 COMMENT ON SEQUENCE company_id_sequence IS 'Sequence for identifiers of table ''companies''';
-
 
 
 CREATE TABLE IF NOT EXISTS vacancies(
@@ -77,6 +76,7 @@ COMMENT ON COLUMN vacancies.name IS 'The appellation of the job';
 COMMENT ON COLUMN vacancies.status IS 'Status of vacancy';
 COMMENT ON COLUMN vacancies.vacancy IS 'Detailed information about vacancy';
 COMMENT ON COLUMN vacancies.area_id IS 'Where working place is situated';
+
 
 
 CREATE SEQUENCE IF NOT EXISTS vacancy_id_sequence START WITH 1 MINVALUE 1 INCREMENT BY 1;
