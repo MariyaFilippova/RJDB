@@ -15,7 +15,6 @@ public class VacancyService {
 
     public VacancyService(VacancyDao vacancyDao) {
         this.vacancyDao = vacancyDao;
-
     }
 
     public VacancyDto getVacancy(long vacancyId) {

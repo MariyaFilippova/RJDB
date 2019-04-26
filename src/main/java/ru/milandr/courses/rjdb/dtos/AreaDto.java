@@ -15,11 +15,11 @@ public class AreaDto {
 
     @Getter
     @Setter
-    private String name;
+    private String area;
 
-    public AreaDto(long area_id, String name) {
+    public AreaDto(long area_id, String area) {
         this.area_id = area_id;
-        this.name = name;
+        this.area = area;
     }
 
 }

@@ -2,7 +2,11 @@ package ru.milandr.courses.rjdb.entities.enums;
 
 public enum Status {
     INACTIVE((short) 0),
-    ACTIVE((short) 1);
+    ACTIVE((short) 1),
+    UNSENT((short) 2),
+    REJECTED((short) 3),
+    ADMITTED((short) 4),
+    PENDING((short ) 5);
 
     private short value;
 

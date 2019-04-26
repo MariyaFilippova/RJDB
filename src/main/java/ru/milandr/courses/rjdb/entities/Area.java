@@ -27,7 +27,7 @@ public class Area {
     @NotNull
     @Getter
     @Setter
-    private String name;
+    private String area;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "area")
     @Getter

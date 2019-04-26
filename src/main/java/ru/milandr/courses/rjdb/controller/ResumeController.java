@@ -1,12 +1,16 @@
 package ru.milandr.courses.rjdb.controller;
+
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import ru.milandr.courses.rjdb.dtos.ResumeDto;
 import ru.milandr.courses.rjdb.services.ResumeService;
-import javax.validation.ValidationException;
-
+import ru.milandr.courses.rjdb.common.ValidationException;
+import java.util.List;
+@Transactional
 @RestController
-@RequestMapping("resume")
+@RequestMapping("resumes")
 public class ResumeController {
 
     private ResumeService resumeService;
@@ -20,10 +24,15 @@ public class ResumeController {
         return resumeService.getResume(resumeId);
     }
 
-    @PostMapping(value = "create", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void createResume(@RequestBody ResumeDto resumeDto) throws ValidationException {
+    @PostMapping(value = "create_resume")
+    public void createResume(@RequestBody ResumeDto resumeDto) throws ValidationException{
         resumeService.createResume(resumeDto);
     }
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<ResumeDto>> getResumes() throws ValidationException {
+        return ResponseEntity.ok(resumeService.getUserResumes());
+    }
+
 
 }
 

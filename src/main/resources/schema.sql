@@ -118,3 +118,5 @@ COMMENT ON TABLE vacancies_resumes IS 'Linkage table between tables ''resumes'' 
 COMMENT ON COLUMN vacancies_resumes.vacancy_id IS 'Vacancy''s identifier';
 COMMENT ON COLUMN vacancies_resumes.resume_id IS 'Resume''s identifier';
 COMMENT ON COLUMN vacancies_resumes.dependency IS 'Response to a resume or job offer';
+
+delete from resumes;
