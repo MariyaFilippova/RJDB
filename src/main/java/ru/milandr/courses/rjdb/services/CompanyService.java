@@ -23,7 +23,7 @@ public class CompanyService {
     private CompanyDao companyDao;
 
     public CompanyService(CompanyDao companyDao) {
-        this.companyDao = getCompanyDao();
+        this.companyDao = companyDao;
     }
 
     public CompanyDto getCompany(long companyId) {
@@ -54,11 +54,16 @@ public class CompanyService {
         companyDto.setVacancies(buildVacancyDtoListFromVacancyList(company.getVacancies()));
         return companyDto;
     }
+    public List<CompanyDto> getAll() {
+        return companyDao.findAllBy().stream()
+                .map(this::buildCompanyDtoFromCompany)
+                .collect(Collectors.toList());
+    }
 
 
     private List<VacancyDto> buildVacancyDtoListFromVacancyList(List<Vacancy> vacancies) {
         return vacancies.stream()
-                .map(vacancy -> new VacancyDto(vacancy.getId(), vacancy.getName(), vacancy.getVacancy(), vacancy.getStatus().getValue(), vacancy.getAreaId(), vacancy.getCompanyId()))
+                .map(vacancy -> new VacancyDto(vacancy.getId(), vacancy.getName(), vacancy.getVacancy(), vacancy.getStatus(), vacancy.getAreaId(), vacancy.getCompanyId()))
                 .collect(Collectors.toList());
     }
 

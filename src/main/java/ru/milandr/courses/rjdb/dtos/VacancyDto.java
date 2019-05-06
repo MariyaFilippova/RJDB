@@ -1,6 +1,5 @@
 package ru.milandr.courses.rjdb.dtos;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 
@@ -30,6 +29,7 @@ public class VacancyDto {
     private String vacancy;
 
 
+
     private short status;
 
     @Getter
@@ -42,21 +42,21 @@ public class VacancyDto {
     private long area_id;
 
 
-    public VacancyDto(long id, String name, String vacancy, short status, long area_id, long company_id) {
+    public VacancyDto(long id, String name, String vacancy, Status  status, long area_id, long company_id) {
         this.id = id;
         this.name = name;
         this.area_id = area_id;
         this.vacancy = vacancy;
-        this.status = status;
+        this.status = status.getValue();
         this.company_id = company_id;
     }
 
-    @JsonIgnore
+
     public Status getStatus() {
         return Status.parse(this.status);
     }
 
-    @JsonIgnore
+
     public void setStatus(Status orderStatus) {
         this.status = orderStatus.getValue();
     }

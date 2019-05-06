@@ -32,7 +32,7 @@ public class ResumeService {
     public void createResume(ResumeDto resumeDto) {
         Resume resume = new Resume();
         resume.setUserId(1L);
-        resume.setAreaId(1L);
+        resume.setAreaId(resumeDto.getArea_id());
         resume.setStatus(Status.UNSENT);
         resume.setResume(resumeDto.getResume());
         resume.setName(resumeDto.getName());
@@ -40,7 +40,7 @@ public class ResumeService {
     }
 
 
-    private Resume buildResumeFromResumeDto(ResumeDto resumeDto) {
+    public Resume buildResumeFromResumeDto(ResumeDto resumeDto) {
         Resume resume = new Resume();
         resume.setStatus(resumeDto.getStatus());
         resume.setAreaId(resumeDto.getArea_id());
@@ -63,7 +63,7 @@ public class ResumeService {
     }
 
     private ResumeDto buildResumeDtoFromResume(Resume resume) {
-        return new ResumeDto(resume.getId(), resume.getName(), resume.getResume(), resume.getStatus().getValue(), resume.getAreaId(), resume.getUserId());
+        return new ResumeDto(resume.getId(), resume.getName(), resume.getResume(), resume.getStatus(), resume.getAreaId(), resume.getUserId());
     }
 
 

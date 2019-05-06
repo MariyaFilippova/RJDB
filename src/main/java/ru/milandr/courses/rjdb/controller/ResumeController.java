@@ -25,7 +25,7 @@ public class ResumeController {
     }
 
     @PostMapping(value = "create_resume")
-    public void createResume(@RequestBody ResumeDto resumeDto) throws ValidationException{
+    public void createResume(@RequestBody ResumeDto resumeDto) {
         resumeService.createResume(resumeDto);
     }
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)

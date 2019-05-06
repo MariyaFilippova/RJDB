@@ -32,7 +32,7 @@ public class ResumeDto {
     private String resume;
 
 
-    private short status;
+    private Short status;
 
     @Getter
     @Setter
@@ -43,23 +43,23 @@ public class ResumeDto {
     private List<VacancyDto> vacancies;
 
 
-    public ResumeDto(long id, String name, String resume, short status, long area_id, long user_id)
+    public ResumeDto(long id, String name, String resume, Status status, long area_id, long user_id)
     {
         this.id = id;
         this.name = name;
         this.area_id = area_id;
-        this.status = status;
+        this.status = status.getValue();
         this.resume = resume;
         this.user_id = user_id;
     }
 
-    @JsonIgnore
+
     public Status getStatus()
     {
         return Status.parse(this.status);
     }
 
-    @JsonIgnore
+
     public void setStatus(Status orderStatus)
     {
         this.status= orderStatus.getValue();

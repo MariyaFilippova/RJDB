@@ -57,7 +57,7 @@ public class UserService {
 
     private List<ResumeDto> buildResumeDtoListFromResumeList(List<Resume> resumes) {
         return resumes.stream()
-                .map(resume -> new ResumeDto(resume.getId(), resume.getName(), resume.getResume(), resume.getStatus().getValue(), resume.getAreaId(), resume.getUserId()))
+                .map(resume -> new ResumeDto(resume.getId(), resume.getName(), resume.getResume(), resume.getStatus(), resume.getAreaId(), resume.getUserId()))
                 .collect(Collectors.toList());
     }
 

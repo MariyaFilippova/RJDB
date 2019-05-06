@@ -4,7 +4,7 @@ import lombok.*;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "ORDERS_GOODS")
+@Table(name = "VACANCIES_RESUMES")
 @IdClass(VacancyResumePK.class)
 @NoArgsConstructor
 @EqualsAndHashCode
