@@ -1,0 +1,8 @@
+{
+  "short_name": "rjdb",
+  "name": "Russian Job DataBase",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

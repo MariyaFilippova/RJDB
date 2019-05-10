@@ -8,7 +8,7 @@ import javax.validation.ValidationException;
 import java.util.List;
 
 @RestController
-@RequestMapping("vacancy")
+@RequestMapping("api/vacancy")
 public class VacancyController {
 
     private VacancyService vacancyService;

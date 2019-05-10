@@ -10,7 +10,7 @@ import ru.milandr.courses.rjdb.common.ValidationException;
 import java.util.List;
 @Transactional
 @RestController
-@RequestMapping("resumes")
+@RequestMapping("api/resumes")
 public class ResumeController {
 
     private ResumeService resumeService;
@@ -25,9 +25,10 @@ public class ResumeController {
     }
 
     @PostMapping(value = "create_resume")
-    public void createResume(@RequestBody ResumeDto resumeDto) {
+    public void createResume(@RequestBody ResumeDto resumeDto) throws ValidationException {
         resumeService.createResume(resumeDto);
     }
+
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<ResumeDto>> getResumes() throws ValidationException {
         return ResponseEntity.ok(resumeService.getUserResumes());

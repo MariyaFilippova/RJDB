@@ -29,19 +29,13 @@ public class UserDto {
 
     @Getter
     @Setter
-    private String mobile_phone;
-
-    @Getter
-    @Setter
     private List<ResumeDto> resumes;
 
 
-    public UserDto(Long id, String email, String name, byte[] photo, String mobile_phone, List<ResumeDto> resumes) {
+    public UserDto(Long id, String email, String name, byte[] photo) {
         this.id = id;
         this.email = email;
         this.name = name;
-        this.photo = photo;
-        this.mobile_phone = mobile_phone;
-        this.resumes = resumes;
     }
+
 }

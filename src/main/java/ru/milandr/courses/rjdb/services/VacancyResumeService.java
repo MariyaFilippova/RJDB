@@ -24,10 +24,10 @@ public class VacancyResumeService {
 
 
     public VacancyResume createVacancyResume (VacancyResumeDto vacancyResumeDto) {
-        VacancyResume vacancyResume = new VacancyResume();
+        VacancyResume vacancyResume = buildVacancyResume(vacancyResumeDto);
         vacancyResume.setDependency((short)1);
-        vacancyResume.setVacancyId(vacancyResumeDto.getVacancy_id());
-        vacancyResume.setResumeId(vacancyResumeDto.getResume_id());
+        vacancyResume.setVacancyId(1L);
+        vacancyResume.setResumeId(305L);
         vacancyResumeDao.save(vacancyResume);
         return vacancyResume;
     }

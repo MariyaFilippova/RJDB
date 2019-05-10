@@ -8,7 +8,7 @@ import java.util.List;
 
 
     @RestController
-    @RequestMapping("areas")
+    @RequestMapping("api/areas")
     public class AreaController {
 
         private AreaService areaService;

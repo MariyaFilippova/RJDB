@@ -1,13 +1,14 @@
 package ru.milandr.courses.rjdb.controller;
+
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import ru.milandr.courses.rjdb.common.ValidationException;
 import ru.milandr.courses.rjdb.dtos.UserDto;
+import ru.milandr.courses.rjdb.dtos.UserPostDto;
 import ru.milandr.courses.rjdb.services.UserService;
 
-import javax.validation.ValidationException;
-
 @RestController
-@RequestMapping("user")
+@RequestMapping("api/users")
 public class UserController {
 
     private UserService userService;
@@ -16,14 +17,13 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/{userId}")
-    public UserDto getUser(@PathVariable Long userId) {
-        return userService.getUser(userId);
+    @PostMapping(value = "create", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public void create(@RequestBody UserPostDto userPostDto) throws ValidationException {
+        userService.create(userPostDto);
     }
-
-    @PostMapping(value = "/create", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void createUser(@RequestBody UserDto userDto) throws ValidationException {
-        userService.createUser(userDto);
+    @GetMapping("current")
+    public UserDto getCurrent() throws ValidationException {
+        return userService.getCurrent();
     }
 
 

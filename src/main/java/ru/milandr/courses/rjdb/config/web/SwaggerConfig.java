@@ -1,4 +1,4 @@
-package ru.milandr.courses.rjdb.config;
+package ru.milandr.courses.rjdb.config.web;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,9 +22,8 @@ import java.util.Collections;
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
-
-    private static final String TITLE = "Russian job database REST API";
-    private static final String DESCRIPTION = "REST API documentation for Russian job database";
+    private static final String TITLE = "RJDB REST API";
+    private static final String DESCRIPTION = "REST API documentation for RJDB";
     private static final String VERSION = "0.1";
     //fixme
     private static final String TERMS_OF_SERVICE = "Terms of service";
@@ -32,8 +31,7 @@ public class SwaggerConfig {
     private static final String LICENSE = "License of API";
     //fixme
     private static final String LICENSE_URL = "API license URL";
-    private static final Contact DEVELOPER_CONTACT = new Contact("Daniil Vorobyev ", "https://vk.com/danvorobyev", "vorobyev.da@phystech.edu");
-
+    private static final Contact DEVELOPER_CONTACT = new Contact("Maria Filippova", "https://vk.com/piter", "maxa.spb6@gmail.com");
 
     /**
      * Provides possibility to use swagger auto-integration
@@ -57,7 +55,7 @@ public class SwaggerConfig {
         .apis(RequestHandlerSelectors.basePackage("ru.milandr.courses.miptshop.controllers"))
         .paths(Predicates.or(
              PathSelectors.ant("/user/*"),
-             PathSelectors.ant("/good/*"),
+             PathSelectors.ant("/product/*"),
              PathSelectors.ant("/order/*")))
         .paths(PathSelectors.any())
         .build()

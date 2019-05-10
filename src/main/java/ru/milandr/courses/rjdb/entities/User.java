@@ -38,11 +38,6 @@ public class User {
     @Setter
     private byte[] photo;
 
-    @Column(name = "MOBILE_PHONE")
-    @NotNull
-    @Getter
-    @Setter
-    private String mobile_phone;
 
     @Column(name = "PASSWORD_HASH")
     @Getter

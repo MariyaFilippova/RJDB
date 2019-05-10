@@ -1,0 +1,194 @@
+.resumePageWrapper{
+    display: grid;
+
+    grid-template-areas:
+            "f t r";
+    grid-template-columns: 7fr 1fr 10fr;
+    grid-gap: 50px;
+}
+.resumes{
+    grid-area: r;
+
+}
+.form{
+    grid-area: f;
+}
+.table{
+    grid-area: t;
+}
+.title{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    text-transform: uppercase;
+    margin-top: 5%;
+    margin-left: 4%;
+    margin-right: 3%;
+    line-height: 400%;
+    color: #524f4e;
+}
+.d
+{
+    line-height: 400%;
+    font-size: 20px;
+    transition: all 1s;
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: none;
+    outline: none;
+    border-radius: 45px;
+    margin: 20px 20px;
+    color: #524f4e;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 3px;
+    font-weight: 600;
+    background: white;
+    box-shadow: 0 8px 15px rgba(0,0,0,.1);
+
+}
+.d:hover {
+    background: #2EE59D;
+    box-shadow: 0 15px 20px rgba(46,229,157,.4);
+
+    transform: translateY(-7px);
+
+    color: white;
+}
+.noResume
+{
+    font-size: 250%;
+    margin-top: 20%;
+    color: #524f4e;
+    font-family: 'Montserrat', sans-serif;
+    margin-left: 5%;
+
+    line-height: 80px;
+
+}
+
+
+a.active
+{
+    color: gray;
+}
+.area
+{
+
+  outline: none;
+  resize: none;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  max-height: 40px;
+  overflow: hidden;
+  border-left: 2px solid #d2bf94;
+  padding: 10px 20px;
+  color: #888;
+  background-color: #eee;
+  -moz-transition: color 1s, background-color 1s;
+  -webkit-transition: color 1s, background-color 1s;
+  -o-transition: color 1s, background-color 1s;
+  transition: color 1s, background-color 1s; }
+.area:focus {
+    resize: both;
+    overflow: auto;
+    max-height: 100%;
+    color: #000;
+}
+
+b {
+    text-decoration: none;
+    outline: none;
+    display: inline-block;
+    width: 140px;
+    height: 45px;
+    line-height: 45px;
+    border-radius: 45px;
+    margin: 10px 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 3px;
+    font-weight: 600;
+    color: #524f4e;
+    background: white;
+    box-shadow: 0 8px 15px rgba(0,0,0,.1);
+    transition: .3s;
+}
+b:hover {
+    background: #2EE59D;
+    box-shadow: 0 15px 20px rgba(46,229,157,.4);
+    color: white;
+    transform: translateY(-7px);
+}
+.select{
+    background: url(https://png.icons8.com/ios/1600/double-down-filled.png) 96% / 10% no-repeat #eee;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    height: 34px;
+    width: 250px;
+}
+.main_container {
+    width: 250px;
+    height: 50px;
+    background: none;
+    transform: translate(60%, 50%);
+
+}
+.f {
+    top: 0;
+    left: 0;
+    height: 100%;
+    border-radius: 10px;
+    border-bottom: black;
+    transform-style: preserve-3d;
+    transition: all 0.8s ease;
+    margin-bottom: 32%;
+
+}
+
+.f:hover {
+    transform: rotateY(180deg);
+}
+.front_card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    border-color: black;
+
+    backface-visibility: hidden;
+    overflow: hidden;
+    text-align: center;
+    background: #eeeeee;
+    color: #524f4e;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+}
+.back_card {
+
+    left: 0;
+    width: 100%;
+    height: 250%;
+    border-radius: 20px;
+    backface-visibility: hidden;
+    overflow: hidden;
+    color: #524f4e;
+    background: #eeeeee;
+    font-size: 10px;
+
+    text-align: center;
+    transform: rotateY(180deg);
+}
+.name {
+    overflow: hidden;
+    text-align: center;
+    color: lightseagreen;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+
+}

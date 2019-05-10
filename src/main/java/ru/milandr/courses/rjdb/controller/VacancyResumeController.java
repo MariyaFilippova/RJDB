@@ -1,17 +1,16 @@
 package ru.milandr.courses.rjdb.controller;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import ru.milandr.courses.rjdb.dtos.VacancyDto;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import ru.milandr.courses.rjdb.dtos.VacancyResumeDto;
-import ru.milandr.courses.rjdb.entities.VacancyResume;
 import ru.milandr.courses.rjdb.services.VacancyResumeService;
-import ru.milandr.courses.rjdb.services.VacancyService;
+
 import javax.validation.ValidationException;
-import java.util.List;
 
 @RestController
-@RequestMapping("vacancy_resume")
+@RequestMapping("api/vacancy_resume")
 public class VacancyResumeController {
 
     private VacancyResumeService vacancyResumeService;

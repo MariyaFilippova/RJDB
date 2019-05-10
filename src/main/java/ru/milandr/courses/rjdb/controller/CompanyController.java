@@ -9,7 +9,7 @@ import javax.validation.ValidationException;
 import java.util.List;
 
 @RestController
-@RequestMapping("company")
+@RequestMapping("api/company")
 public class CompanyController {
 
     private CompanyService companyService;
