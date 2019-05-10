@@ -26,7 +26,8 @@ const initialState = {
     resumes : [],
     areas : [],
     resumeId: "",
-    vacancyId: ""
+    vacancyId: "",
+    companyVacancyId:""
 };
 
 const vacancyReducer = (state = initialState, action) => {
@@ -113,6 +114,7 @@ const sendResume = (state) =>
     let vacancyResumeDto  = {
         resume_id : stateCopy.resumeId,
         vacancy_id : stateCopy.vacancyId,
+        company_id : stateCopy.companyVacancyId
     };
     axios.post("api/vacancy_resume/create" ,  vacancyResumeDto);
     return stateCopy;
