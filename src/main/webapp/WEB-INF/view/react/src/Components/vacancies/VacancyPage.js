@@ -2,7 +2,7 @@ import React from 'react';
 import Vacancy from "./item/Vacancy";
 import s from "./VacancyPage.module.css";
 import Resume from "../resumes/item/Resume";
-import {NavLink} from "react-router-dom";
+
 import Company from "./item/Company";
 import Area from "../resumes/item/Area";
 
@@ -15,13 +15,17 @@ let VacancyPage = (props) => {
         props.fetchCompanies();
         props.fetchAreas();
     }
-
-    // const onResumeChange = (event) =>
-    // {
-    //     props.selectResume(event);
-    // };
-    const onSendResume = () => {
+    const onSendResume = () =>
+    {
         props.sendResume();
+    };
+    const onSelectResume = (event) =>
+    {
+        props.selectResume(event);
+    };
+    const onSelectVacancy = (event) =>
+    {
+        props.selectVacancy(event);
     };
 
 
@@ -40,13 +44,15 @@ let VacancyPage = (props) => {
         .map(vacancy =>
             <Vacancy key={vacancy.id}
                      id={vacancy.id}
-                     companyId={vacancy.company_id}
+                     company={vacancy.company_id}
                      vacancy={vacancy.vacancy}
                      name={vacancy.name}
                      area={vacancy.area_id}
                      status={vacancy.status}
 
             />);
+
+
 
 
     let resumes = props.resumes
@@ -57,67 +63,90 @@ let VacancyPage = (props) => {
         );
     let companies = props.companies
         .map((company) => <Company key={company.id}
+                                   id = {company.id}
                                         name={company.name}
+
             />
         );
-    console.log('jjjjjjjjjjjjjjjj')
-    {console.log(companies)}
 
 
 
-    return  <div className={s.main_container}>
+    return  <div className={s.vacancyWrapper}>
+        <table className={s.table} border="1px" width="1px" height="2000px"> </table>
+                <div className={s.main_container}>
+
+                    {vacancies.map((v) =>
+                        <div className={s.f}>
+                            <div className={s.card}>
+
+                                <div className={s.name}> Vacancy: </div> {v.props.name}
+                                <br/>
 
 
-        {vacancies.map((v) =>
-            <div className={s.f}>
-                <div className={s.card}>
-
-                    <div className={s.name}> Vacancy: </div> {v.props.name}
-                    <br/>
-                    <div className={s.name}> Details: </div>{v.props.vacancy}
-                    <br/>
-                    <div className={s.name}> Status: </div>{v.props.status}
-                    <br/>
-                    <div className={s.name}> Area: </div> {areas.filter(area => area.props.id === v.props.area)}
-                    <br/>
-                    <div className={s.name}> Company:  </div> {companies.filter(company => company.props.key === v.props.companyId)}
+                            </div>
+                            <div className={s.back_card}>
+                                <div className={s.name}> Details: </div>{v.props.vacancy}
+                                <br/>
+                                <div className={s.name}> Status: </div>{v.props.status}
+                                <br/>
+                                <div className={s.name}> Area: </div> {areas.filter(area => area.props.id === v.props.area)}
+                                <br/>
+                                <div className={s.name}> Company:  </div> {companies.filter(company => company.props.id === v.props.company)}
+                                <br/>
 
 
+                            </div>
+                        </div>
 
-                    <br/>
-
+                    )}
                 </div>
-                <div className={s.back_card}>
+
+                    <div className={s.sending}>
+
+                        <div className={s.vacancy}> Choose your resume to send:</div>
+
+                        <div>
+                            <select className={s.select}
+                                    value = {props.id}
+
+                                    onChange={onSelectResume}>
+
+                                <option/>
+                                {resumes.map((resume) => {
+                                    return <option key={resume.props.id} value={resume.props.id} > {resume.props.name}
+
+                                    </option>
+                                })
+                                }
+                            </select>
+                        </div>
+
+                            <div className={s.vacancy}> Choose vacancy :</div>
+
+                        <div>
+                            <select className={s.select}
+                                    value = {props.id}
+
+                                    onChange={onSelectVacancy}>
+
+                                <option/>
+                                {vacancies.map((vacancy) => {
+                                    return <option key={vacancy.props.id} value={vacancy.props.id} > {vacancy.props.name}
+                                        {console.log(vacancy.props.id)}
+                                    </option>
 
 
-                    <div className={s.vacancy}> Choose your resume to send:</div>
+                                })
+                                }
 
-
-                    <div>
-
-                        <select className={s.select}
-                                value={props.id}>
-
-                            <option/>
-                            {resumes.map((resume) => {
-                                return <option key={resume.props.id} value={resume.props.id} > {resume.props.resume}
-
-                                </option>
-                            })
-                            }
-                        </select>
+                            </select>
+                        </div>
+                        <button className={s.button} onClick = {onSendResume}> Send Resume </button>
                     </div>
-                    <br/>
-                    <NavLink to ="/goodJobBro" activeClassName={s.active}>
-                        <button className={s.button} onClick={onSendResume}> SendResume </button>
-                    </NavLink>
-
                 </div>
-            </div>
-        )}
 
 
 
-    </div>;
+
 };
 export default VacancyPage;

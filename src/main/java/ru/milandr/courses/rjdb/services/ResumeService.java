@@ -31,13 +31,6 @@ public class ResumeService {
         Long userId = userService.getCurrentAuthenticatedUserIdSafely();
         Resume resume = new Resume();
         resume.setUserId(userId);
-        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-        System.out.println(userId);
-        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
         resume.setAreaId(resumeDto.getArea_id());
         resume.setStatus(Status.UNSENT);
         resume.setResume(resumeDto.getResume());

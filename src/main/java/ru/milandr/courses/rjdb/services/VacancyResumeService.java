@@ -25,9 +25,11 @@ public class VacancyResumeService {
 
     public VacancyResume createVacancyResume (VacancyResumeDto vacancyResumeDto) {
         VacancyResume vacancyResume = buildVacancyResume(vacancyResumeDto);
-        vacancyResume.setDependency((short)1);
-        vacancyResume.setVacancyId(1L);
-        vacancyResume.setResumeId(305L);
+        vacancyResume.setVacancyId(vacancyResumeDto.getVacancy_id());
+        vacancyResume.setResumeId(vacancyResumeDto.getResume_id());
+        System.out.println("yyyyyyyyyyyy");
+        System.out.println(vacancyResumeDto.getResume_id());
+        System.out.println(vacancyResume.getVacancyId());
         vacancyResumeDao.save(vacancyResume);
         return vacancyResume;
     }
@@ -41,15 +43,13 @@ public class VacancyResumeService {
                 vacancyResume.getResumeId(),
                 vacancyResume.getDependency());
 
-
         return vacancyResumeDto;
     }
     private VacancyResume buildVacancyResume(VacancyResumeDto vacancyResumeDto) {
 
         VacancyResume vacancyResume = new VacancyResume(
                 vacancyResumeDto.getVacancy_id(),
-                vacancyResumeDto.getResume_id(),
-                vacancyResumeDto.getDependency());
+                vacancyResumeDto.getResume_id(), (short)1);
         return vacancyResume;
     }
 

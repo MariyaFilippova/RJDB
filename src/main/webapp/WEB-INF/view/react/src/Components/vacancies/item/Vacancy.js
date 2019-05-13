@@ -11,6 +11,10 @@ const Vacancy = (props) => {
     }
 
 
+
+
+
+
     return (
         <div className={s.vacancy_wrapper}>
 
@@ -30,6 +34,7 @@ const Vacancy = (props) => {
                  Company:
                 {props.company_id}
                     <br/>
+
 
 
 

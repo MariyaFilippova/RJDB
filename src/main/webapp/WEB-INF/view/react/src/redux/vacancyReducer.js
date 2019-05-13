@@ -3,12 +3,11 @@ const SET_MUST_FETCH_VACANCIES = 'SET_MUST_FETCH_VACANCIES';
 const FETCH_VACANCIES = 'FETCH_VACANCIES';
 const FETCH_VACANCIES_FULFILLED = 'FETCH_VACANCIES_FULFILLED';
 const FETCH_VACANCIES_PENDING = 'FETCH_VACANCIES_PENDING';
-
 const SELECT_RESUME ='SELECT_RESUME';
 const SEND_RESUME = 'SEND_RESUME';
 const  FETCH_RESUMES = 'FETCH_RESUMES ';
 const FETCH_RESUMES_FULFILLED = 'FETCH_RESUMES_FULFILLED';
-
+const SELECT_VACANCY = 'SELECT_VACANCY';
 const FETCH_COMPANIES_FULFILLED ='FETCH_COMPANIES_FULFILLED';
 const SET_MUST_FETCH_COMPANIES = 'SET_MUST_FETCH_COMPANIES';
 const FETCH_COMPANIES = 'FETCH_COMPANIES';
@@ -27,7 +26,6 @@ const initialState = {
     areas : [],
     resumeId: "",
     vacancyId: "",
-    companyVacancyId:""
 };
 
 const vacancyReducer = (state = initialState, action) => {
@@ -46,6 +44,8 @@ const vacancyReducer = (state = initialState, action) => {
                 mustFetch: action.newValue
             }
         }
+        case SELECT_VACANCY:
+            return selectVacancy(state, action);
         case FETCH_AREAS_FULFILLED:
             return fetchAreasFulfilled(state, action);
 
@@ -56,6 +56,9 @@ const vacancyReducer = (state = initialState, action) => {
                 ...state,
                 mustFetch: action.newValue
             };
+        case SELECT_RESUME :
+            return selectResume(state, action);
+
         case FETCH_COMPANIES:
             return  fetchCompaniesCreator;
         case SEND_RESUME:
@@ -74,6 +77,20 @@ const vacancyReducer = (state = initialState, action) => {
             return state;
     }
 };
+const selectResume =(state, action) => {
+    let stateCopy = {...state};
+    stateCopy.resumeId = action.resumeId;
+
+    return stateCopy;
+};
+
+const selectVacancy =(state, action) => {
+    let stateCopy = {...state};
+    stateCopy.vacancyId = action.vacancyId;
+
+    return stateCopy;
+};
+
 const fetchVacanciesFulfilled = (state, action) => {
     return {
         ...state,
@@ -111,12 +128,14 @@ const sendResume = (state) =>
 {
     let stateCopy = {...state};
 
+
     let vacancyResumeDto  = {
         resume_id : stateCopy.resumeId,
-        vacancy_id : stateCopy.vacancyId,
-        company_id : stateCopy.companyVacancyId
+        vacancy_id : stateCopy.vacancyId
     };
     axios.post("api/vacancy_resume/create" ,  vacancyResumeDto);
+    stateCopy.vacancyId = "";
+    stateCopy.resumeId = "";
     return stateCopy;
 };
 export const fetchResumeCreator = () => {
@@ -137,6 +156,23 @@ export const setMustFetchAreaCreator = (newValue) => {
         newValue: newValue
     }
 };
+
+export const selectResumeCreator = (resumeId) =>
+{
+    return {
+        type: SELECT_RESUME,
+        resumeId: resumeId
+    }
+};
+export const selectVacancyCreator = (vacancyId) =>
+{
+    console.log(vacancyId);
+    return {
+        type: SELECT_VACANCY,
+        vacancyId: vacancyId
+    }
+};
+
 
 export const setMustFetchVacanciesCreator = (newValue) => {
     return {

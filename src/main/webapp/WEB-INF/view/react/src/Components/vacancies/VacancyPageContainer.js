@@ -6,7 +6,7 @@ import {
     fetchResumeCreator,
     sendResumeCreator,
     fetchCompaniesCreator,
-    setMustFetchCompanyCreator, setMustFetchAreaCreator,
+    setMustFetchCompanyCreator, setMustFetchAreaCreator, selectResumeCreator, selectVacancyCreator,
 
 } from "../../redux/vacancyReducer";
 import {fetchAreasCreator, setMustFetchResumeCreator} from "../../redux/resumeReducer";
@@ -45,6 +45,16 @@ let mapDispatchToProps = (dispatch) => {
         },
         fetchAreas: () => {
             dispatch(fetchAreasCreator())
+        },
+        selectResume: (event) => {
+            let resumeId = event.target.value;
+
+            dispatch(selectResumeCreator(resumeId))
+        },
+        selectVacancy: (event) => {
+            let vacancyId = event.target.value;
+            console.log(event.target.value);
+            dispatch(selectVacancyCreator(vacancyId))
         }
     };
 };
